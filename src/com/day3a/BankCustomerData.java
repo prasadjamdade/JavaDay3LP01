@@ -4,25 +4,24 @@ import java.lang.*;
 
 public class BankCustomerData {
 
-    //Class level Variables
+    //Class level Static Variable
     static String bankName = "Lakshmi Cheat Funds. pvt. ltd.";
 
+    //Getters to return values saved, as Constructor doesn't return.
     public String getCustomerName() {
         return customerName;
     }
-
     public long getAccountNumber() {
         return accountNumber;
     }
-
     public int getCustomerAge() {
         return customerAge;
     }
-
     public String getLocality() {
         return locality;
     }
 
+    //Class level non-Static Variables
     String customerName;
     long accountNumber;
     int customerAge;
@@ -37,6 +36,7 @@ public class BankCustomerData {
         this.locality = city;
     }
 
+    //method to display entered data
     public static void display2(BankCustomerData dataEntry){
         System.out.println("Bank Name: \""+bankName
                 +"\",\nCustomer Name: \""+ dataEntry.getCustomerName()
@@ -45,34 +45,30 @@ public class BankCustomerData {
                 + "\",\nLocality of Customer: \"" + dataEntry.getLocality() + "\".");
     }
 
+    //Scanner Method
+    public static void dataScanner(){
+        //Scanner Object
+        Scanner displayAccount = new Scanner(System.in);
 
+        System.out.println("Enter the customer name.");
+        String name = displayAccount.next();
+
+        System.out.println("Enter the account number.");
+        long accNumber = displayAccount.nextLong();
+
+        System.out.println("Enter the age of customer.");
+        int age = displayAccount.nextInt();
+
+        System.out.println("Enter the locality of customer.");
+        String city = displayAccount.next();
+        BankCustomerData dataEntry = new BankCustomerData(name, accNumber, age, city);
+        display2(dataEntry);
+    }
 
     //Main Method
     public static void main(String[] args) {
-
-
-         //Scanner Object
-        Scanner displayAccount = new Scanner(System.in);
-
-            System.out.println("Enter the customer name.");
-            String name = displayAccount.next();
-
-            System.out.println("Enter the account number.");
-            long accNumber = displayAccount.nextLong();
-
-            System.out.println("Enter the age of customer.");
-            int age = displayAccount.nextInt();
-
-            System.out.println("Enter the locality of customer.");
-            String city = displayAccount.next();
-            BankCustomerData dataEntry = new BankCustomerData(name, accNumber, age, city);
-
-        display2(dataEntry);
-
-
+        //scanner Method called which calls display Method along.
+        dataScanner();
     }
-
-
-
 }
 
